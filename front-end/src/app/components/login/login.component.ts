@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  // function that post data login to db via laravel
   onSubmit() {
     return this.http.post('http://localhost:8000/api/login', this.form).subscribe(
       data => console.log(data),
