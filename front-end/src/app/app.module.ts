@@ -12,6 +12,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
+import { JwtlarService } from './services/jwtlar.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [JwtlarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { JwtlarService } from 'src/app/services/jwtlar.service';
 
 @Component({
   selector: 'app-signup',
@@ -22,11 +22,11 @@ export class SignupComponent implements OnInit {
     password: null
   };
 
-  constructor( private http: HttpClient ) { }
+  constructor( private jwtlarservice: JwtlarService) { }
 
   // function that post data login to db via laravel
   onSubmit() {
-    return this.http.post('http://localhost:8000/api/signup', this.form).subscribe(
+    this.jwtlarservice.signup(this.form).subscribe(
       data => console.log(data),
       error => this.handleError(error) // error handler is called here
     );

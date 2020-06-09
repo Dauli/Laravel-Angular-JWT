@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { JwtlarService } from 'src/app/services/jwtlar.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   // Initialization of error to handle for unauthorized user
   public error = null;
 
-  constructor( private http: HttpClient) { }
+  constructor( private jwtlarService: JwtlarService) { }
 
   ngOnInit() {
 
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   // function that post data login to db via laravel
   onSubmit() {
-    return this.http.post('http://localhost:8000/api/login', this.form).subscribe(
+    this.jwtlarService.login(this.form).subscribe(
       data => console.log(data),
       error => this.handleError(error) // error handler is called here
     );
