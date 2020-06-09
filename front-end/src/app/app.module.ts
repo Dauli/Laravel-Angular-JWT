@@ -13,6 +13,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { JwtlarService } from './services/jwtlar.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,10 @@ import { JwtlarService } from './services/jwtlar.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [JwtlarService],
+  providers: [
+    JwtlarService,
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
