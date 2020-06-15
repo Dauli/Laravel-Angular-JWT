@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtlarService } from 'src/app/services/jwtlar.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,12 @@ export class LoginComponent implements OnInit {
   // Initialization of error to handle for unauthorized user
   public error = null;
 
-  constructor( private jwtlarService: JwtlarService) { }
+  constructor(
+      private jwtlarService: JwtlarService,
+      private tokenService: TokenService
+    ) {
+
+  }
 
   ngOnInit() {
 
@@ -25,10 +31,18 @@ export class LoginComponent implements OnInit {
   // function that post data login to db via laravel
   onSubmit() {
     this.jwtlarService.login(this.form).subscribe(
-      data => console.log(data),
+      // handle response here by calling handleResponse()
+      data => this.handleResponse(data),
       error => this.handleError(error) // error handler is called here
     );
   }
+
+
+  // methode that handle response from tokenService
+  handleResponse(data) {
+    this.tokenService.handle(data.access_token);
+  }
+
 
   // Error function to handle unauthorized user display
   handleError(error) {
