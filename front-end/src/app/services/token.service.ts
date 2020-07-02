@@ -15,8 +15,6 @@ export class TokenService {
   // token handle methode saved in localstorage()
   handle(token) {
     this.set(token);
-    // let test payload function from split
-    console.log(this.isValid());
   }
 
   // set item in the localStorage

@@ -9,13 +9,13 @@ export class JwtlarService {
 
   constructor(private http: HttpClient) { }
 
-  // singup functionality
-  signup(data) {
-    return this.http.post(`${this.baseUrl}/signup`, data);
-  }
-
   // login user in fuctionality
   login(data) {
     return this.http.post(`${this.baseUrl}/login`, data)
+  }
+
+  // singup functionality
+  signup(data) {
+    return this.http.post(`${this.baseUrl}/signup`, data);
   }
 }

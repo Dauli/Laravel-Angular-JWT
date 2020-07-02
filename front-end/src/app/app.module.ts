@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { JwtlarService } from './services/jwtlar.service';
 import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TokenService } from './services/token.service';
   ],
   providers: [
     JwtlarService,
-    TokenService
+    TokenService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

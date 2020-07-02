@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtlarService } from 'src/app/services/jwtlar.service';
+import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
-  // Initialization of name, email, password and password_confirm on form
+export class SignupComponent {
+  // Initialization of form object
   public form = {
     email: null,
     name: null,
@@ -22,18 +24,26 @@ export class SignupComponent implements OnInit {
     password: null
   };
 
-  constructor( private jwtlarservice: JwtlarService) { }
+  constructor(
+    private jwtlarservice: JwtlarService,
+    private tokenService: TokenService,
+    private router: Router
+  ) { }
 
   // function that post data login to db via laravel
   onSubmit() {
     this.jwtlarservice.signup(this.form).subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error) // error handler is called here
     );
   }
 
-  ngOnInit() {
+  // methode that handle response from tokenService
+  handleResponse(data) {
+    this.tokenService.handle(data.access_token);
 
+    // redirect to profile component if user signin successfully
+    this.router.navigateByUrl('/profile');
   }
 
   // Error function to handle unauthorized user display
