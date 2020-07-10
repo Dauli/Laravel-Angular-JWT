@@ -21,6 +21,6 @@ export class JwtlarService {
 
   // password reset request to backend link
   sendPasswordRequestLink(data) {
-    return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, data);
+    return this.http.post(`${this.baseUrl}/sendPasswordRequestLink`, data);
   }
 }
