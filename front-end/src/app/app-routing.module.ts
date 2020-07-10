@@ -23,7 +23,7 @@ const appRoutes:Routes = [
   {
     path: 'signup',
     component: SignupComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [BeforeLoginService]
   },
   {
     path: 'profile',
@@ -33,7 +33,7 @@ const appRoutes:Routes = [
   {
     path: 'request-pwd-reset',
     component: RequestResetComponent,
-    canActivate: [AfterLoginService]
+    canActivate: [BeforeLoginService]
   },
   {
     path: 'response-pwd-reset',
